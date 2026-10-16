@@ -18,9 +18,8 @@
   --text-color: #131313;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
-
   --foreground-color: #131313;
-  --gray-100-color: #EEEEEE;
+  --gray-100-color: #EEE;
   --gray-200-color: #D1D1D1;
   --gray-300-color: #B2B2B2;
   --gray-400-color: #8A8A8A;
@@ -34,8 +33,8 @@
   --warning-base-color: #FFBA33;
   --warning-background-color: #FFF1D6;
   --warning-foreground-color: #4D3200;
-  --error-base-color: #FF3333;
-  --error-background-color: #FFCCCC;
+  --error-base-color: #F33;
+  --error-background-color: #FCC;
   --error-foreground-color: #4D0000;
 
   /* fonts */
@@ -59,13 +58,13 @@
   --heading-font-size-3xl: 30px;
   --heading-font-size-2xl: 24px;
 
-  /*font weights*/
+  /* font weights */
   --font-weight-300: 300;
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
 
-  /*line-heights*/
+  /* line-heights */
   --line-height-18: 1.125; /* 18px / 16px */
   --line-height-20: 1.25;  /* 20px / 16px */
   --line-height-24: 1.5;   /* 24px / 16px */
@@ -157,23 +156,28 @@ h1 {
   font-size: var(--heading-font-size-8xl);
   line-height: var(--line-height-96); 
 }
+
 h2 { 
   font-size: var(--heading-font-size-6xl);
   line-height: var(--line-height-64);  
 }
+
 h3 { 
   font-size: var(--heading-font-size-5xl);
   line-height: var(--line-height-52);  
 }
+
 h4 { 
   font-size: var(--heading-font-size-4xl);
   line-height: var(--line-height-44);  
 }
+
 h5 { 
   font-size: var(--heading-font-size-3xl);
   font-weight: var(--font-weight-500);
   line-height: var(--line-height-32);  
 }
+
 h6 { 
   font-size: var(--heading-font-size-2xl);
   font-weight: var(--font-weight-500);
