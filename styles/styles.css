@@ -18,6 +18,24 @@
   --text-color: #131313;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
+  --foreground-color: #131313;
+  --gray-100-color: #EEE;
+  --gray-200-color: #D1D1D1;
+  --gray-300-color: #B2B2B2;
+  --gray-400-color: #8A8A8A;
+  --gray-500-color: #575757;
+  --brand-base-color: #94FF5E;
+  --brand-background-color: #EBFFDF;
+  --brand-foreground-color: #212B1B;
+  --success-base-color: #6AEB60;
+  --success-background-color: #DDFADB;
+  --success-foreground-color: #0D4409;
+  --warning-base-color: #FFBA33;
+  --warning-background-color: #FFF1D6;
+  --warning-foreground-color: #4D3200;
+  --error-base-color: #F33;
+  --error-background-color: #FCC;
+  --error-foreground-color: #4D0000;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -26,15 +44,38 @@
   /* body sizes */
   --body-font-size-m: 22px;
   --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-xl:20px;
+  --body-font-size-lg: 18px;
+  --body-font-size-base: 16px;
+  --body-font-size-sm: 14px;
+  --body-font-size-xs: 12px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  --heading-font-size-8xl: 96px;
+  --heading-font-size-6xl: 60px;
+  --heading-font-size-5xl: 48px;
+  --heading-font-size-4xl: 40px;
+  --heading-font-size-3xl: 30px;
+  --heading-font-size-2xl: 24px;
+
+  /* font weights */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+
+  /* line-heights */
+  --line-height-18: 1.125; /* 18px / 16px */
+  --line-height-20: 1.25;  /* 20px / 16px */
+  --line-height-24: 1.5;   /* 24px / 16px */
+  --line-height-28: 1.75;  /* 28px / 16px */
+  --line-height-32: 2.0;   /* 32px / 16px */
+  --line-height-36: 2.25;  /* 36px / 16px */
+  --line-height-44: 2.75;  /* 44px / 16px */
+  --line-height-52: 3.25;  /* 52px / 16px */
+  --line-height-64: 4.0;   /* 64px / 16px */
+  --line-height-96: 6.0    /* 96px / 16px */
+
 
   /* nav height */
   --nav-height: 64px;
@@ -61,12 +102,12 @@
     --body-font-size-xs: 14px;
 
     /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    --heading-font-size-8xl: 45px;
+    --heading-font-size-6xl: 36px;
+    --heading-font-size-5xl: 28px;
+    --heading-font-size-4xl: 22px;
+    --heading-font-size-3xl: 20px;
+    --heading-font-size-2xl: 18px;
   }
 }
 
@@ -76,8 +117,8 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  font-size: var(--body-font-size-base);
+  line-height: var(--line-height-24);
 }
 
 body.appear {
@@ -107,17 +148,41 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: var(--font-weight-400);
   scroll-margin: 40px;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1 { 
+  font-size: var(--heading-font-size-8xl);
+  line-height: var(--line-height-96); 
+}
+
+h2 { 
+  font-size: var(--heading-font-size-6xl);
+  line-height: var(--line-height-64);  
+}
+
+h3 { 
+  font-size: var(--heading-font-size-5xl);
+  line-height: var(--line-height-52);  
+}
+
+h4 { 
+  font-size: var(--heading-font-size-4xl);
+  line-height: var(--line-height-44);  
+}
+
+h5 { 
+  font-size: var(--heading-font-size-3xl);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-32);  
+}
+
+h6 { 
+  font-size: var(--heading-font-size-2xl);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-28); 
+}
 
 p,
 dl,
