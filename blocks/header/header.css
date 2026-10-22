@@ -17,7 +17,7 @@ header nav {
   margin: auto;
   max-width: 1248px;
   height: var(--nav-height);
-  padding: 0 24px;
+  padding: 10px 24px;
   font-family: var(--body-font-family);
 }
 
@@ -40,7 +40,7 @@ header nav[aria-expanded='true'] {
     justify-content: space-between;
     gap: 0 32px;
     max-width: 1264px;
-    padding: 0 32px;
+    padding: 10px 32px;
   }
 }
 
@@ -147,6 +147,9 @@ header nav .nav-brand img {
   width: 128px;
   height: auto;
 }
+header nav .nav-brand p{
+  font-size: var(--body-font-size-xl);
+}
 
 /* sections */
 header nav .nav-sections {
@@ -165,11 +168,13 @@ header nav[aria-expanded='true'] .nav-sections {
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
-  font-size: var(--body-font-size-s);
+  justify-content: center;
 }
 
-header nav .nav-sections ul > li {
-  font-weight: 500;
+header nav .nav-sections ul > li p {
+  
+  font-size: var(--body-font-size-sm);
+  font-weight: var(--font-weight-600);
 }
 
 header nav .nav-sections .nav-drop > button {
@@ -270,4 +275,8 @@ header nav .nav-sections .nav-drop > button[aria-expanded='false'] + ul {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+header nav .nav-tools div{
+  display: flex;
+  gap: 16px;
 }

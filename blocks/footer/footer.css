@@ -7,18 +7,39 @@ footer {
   border-bottom: 4px solid var(--brand-base-color);
 }
 
-footer .footer > div {
+footer .footer .columns {
   display: flex;
   flex-direction: column;
   gap: 64px;
-  margin: auto;
-  max-width: 1520px;
+  max-width: 1440px;
   padding: 40px 24px 64px;
+  margin: auto;
 }
 
+footer .columns .icon{
+  margin-right : 24px;
+} 
+
+footer .columns .icon-payment-method{
+  min-width: 300px;
+  margin-right: 0;
+}
+
+footer .columns ul{
+  padding-left: 0;
+  list-style: none;
+}
+footer .columns li{
+   padding-bottom: 16px;
+}
+
+footer .columns ul li a{
+  font-size: var(--body-font-size-sm);
+  color: var(--gray-500-color);
+}
 
 @media (width >= 900px) {
-  footer .footer > div {
+  footer .footer .columns {
     padding: 40px 40px 64px;
   }
 
@@ -35,6 +56,9 @@ footer .footer > div {
 
   footer .columns-5-cols > div > div:first-child {
     flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
   }
 }
 
