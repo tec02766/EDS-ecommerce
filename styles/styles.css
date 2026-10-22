@@ -74,8 +74,7 @@
   --line-height-44: 2.75;  /* 44px / 16px */
   --line-height-52: 3.25;  /* 52px / 16px */
   --line-height-64: 4.0;   /* 64px / 16px */
-  --line-height-96: 6.0    /* 96px / 16px */
-
+  --line-height-96: 6.0;    /* 96px / 16px */
 
   /* nav height */
   --nav-height: 64px;

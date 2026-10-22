@@ -16,8 +16,7 @@ header nav {
   gap: 0 24px;
   margin: auto;
   max-width: 1248px;
-  height: var(--nav-height);
-  padding: 10px 24px;
+  padding: 0 24px;
   font-family: var(--body-font-family);
 }
 
@@ -41,6 +40,7 @@ header nav[aria-expanded='true'] {
     gap: 0 32px;
     max-width: 1264px;
     padding: 10px 32px;
+    height: var(--nav-height);
   }
 }
 
