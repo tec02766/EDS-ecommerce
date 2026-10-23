@@ -27,11 +27,10 @@
 }
 
 .cards .cards-card-body a.button{
-  border-color: transparent;
   background-color: transparent;
   color: var(--text-color);
   padding: 0;
-  border: 0;
+  border: 0 solid transparent;
   border-radius: 0;
 }
 
@@ -58,7 +57,7 @@
   color: var(--text-color) ;
 }
 
-.cards.products p a:hover, .cards.products a:hover{
+.cards.products a:hover, .cards.products p a:hover{
   text-decoration: none;
 }
 
