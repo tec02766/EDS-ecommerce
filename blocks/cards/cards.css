@@ -7,21 +7,64 @@
   gap: 24px;
 }
 
-.cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
-}
-
-.cards .cards-card-body {
-  margin: 16px;
+.cards .cards-card-body p{
+  font-size: var(--body-font-size-lg);
 }
 
 .cards .cards-card-image {
   line-height: 0;
 }
 
+.cards .cards-card-image p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .cards > ul > li img {
   width: 100%;
-  aspect-ratio: 4 / 3;
   object-fit: cover;
+  border-radius: 12px;
+}
+
+.cards .cards-card-body a.button{
+  background-color: transparent;
+  color: var(--text-color);
+  padding: 0;
+  border: 0 solid transparent;
+  border-radius: 0;
+}
+
+.cards-container.section{
+    padding: 0;
+}
+
+.cards-container h3{
+  margin-top: 0;
+  line-height: var(--line-height-28);
+}
+
+/** products **/
+.cards.products{
+  margin-top: 16px;
+}
+
+.cards.products p{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.cards.products p a{
+  color: var(--text-color) ;
+}
+
+.cards.products a:hover, .cards.products p a:hover{
+  text-decoration: none;
+}
+
+.cards.products  p:nth-child(2) a{
+  color: var(--gray-500-color);
+}
+
+.cards.products .cards-card-body{
+  margin: 16px 0;
 }
