@@ -2,13 +2,19 @@
   max-width: 100%;
   padding: 0;
   margin: 0;
-  min-height: 100vh;
+  min-height: calc(100vh - 64px);
+}
+
+.hero{
+   min-height: calc(100vh - 64px);
 }
 
 .hero picture {
   position: absolute;
-  z-index: -1;
+  left: 0;
+  top: 0;
   inset: 0;
+  z-index: -1;
   object-fit: cover;
   box-sizing: border-box;
   min-height: 100vh;
@@ -43,10 +49,12 @@
   font-size: var(--body-font-size-base);
   padding: 12px 16px;
   border-radius: 30px;
+  margin-bottom: 32px;
+  display: block;
 }
 
-.hero div{
-  height: calc(100vh - 80px);
+.hero > div{
+  height: calc(100vh - 64px);
 }
 
 .hero > div > div {
@@ -54,5 +62,10 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
+  height: 100%
+}
+
+.hero-container.section{
+  margin-bottom: 0;
 }
   
