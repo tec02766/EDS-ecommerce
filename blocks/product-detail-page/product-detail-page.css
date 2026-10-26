@@ -1,0 +1,13 @@
+.pdp-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.pdp-container .pdp-media-side, .pdp-container .pdp-info-side{
+    flex: 1;
+}
+
+.pdp-container .pdp-info-side .pdp-title{
+   font-size: var(--heading-font-size-4xl);
+   line-height: var(--line-height-28);
+}
