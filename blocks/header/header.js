@@ -90,6 +90,91 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
+export function initCartManager(cartIconSelector, headerContainerSelector) {
+  const vendorSelector = typeof cartIconSelector === 'string' ? cartIconSelector : '.icon-cart';
+  const cartIcon = typeof cartIconSelector === 'string'
+    ? document.querySelector(cartIconSelector)
+    : cartIconSelector;
+  const resolvedContainer = typeof headerContainerSelector === 'string'
+    ? document.querySelector(headerContainerSelector)
+    : headerContainerSelector;
+
+  function updateMiniCart() {
+    const cart = JSON.parse(localStorage.getItem('aem-cart')) || [];
+
+    const activeCartIcon = cartIcon || document.querySelector(vendorSelector);
+    if (activeCartIcon) {
+      let badge = activeCartIcon.querySelector('.header-cart-badge');
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'header-cart-badge';
+        activeCartIcon.appendChild(badge);
+      }
+      const totalQty = cart.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+      badge.textContent = totalQty;
+      badge.style.display = totalQty > 0 ? 'inline-flex' : 'none';
+    }
+
+    if (!resolvedContainer) return;
+
+    let flyoutContainer = resolvedContainer.querySelector('.header-cart-flyout');
+    if (!flyoutContainer) {
+      flyoutContainer = document.createElement('div');
+      flyoutContainer.className = 'header-cart-flyout';
+      flyoutContainer.style.display = 'none';
+      resolvedContainer.appendChild(flyoutContainer);
+    }
+
+    if (cart.length === 0) {
+      flyoutContainer.innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
+      return;
+    }
+
+    let cartHTML = '<div class="mini-cart-list">';
+    cart.forEach((item) => {
+      const unitPrice = Number(item.price || 0);
+      const itemTotal = (unitPrice * Number(item.quantity || 0)).toFixed(2);
+      cartHTML += `
+        <div class="mini-cart-item">
+          <img src="${item.image || ''}" alt="${item.title || 'Product'}" class="mini-cart-img" width="50" height="50">
+          <div class="mini-cart-details">
+            <p class="mini-cart-title">${item.title || 'Product'}</p>
+            <p class="mini-cart-meta">Qty: ${item.quantity || 0} | $${itemTotal}</p>
+          </div>
+        </div>
+      `;
+    });
+
+    cartHTML += `
+      </div>
+      <div class="mini-cart-actions">
+        <a href="/checkout" class="mini-cart-checkout-btn">Proceed to Checkout</a>
+      </div>
+    `;
+
+    flyoutContainer.innerHTML = cartHTML;
+  }
+
+  document.addEventListener('click', (e) => {
+    const activeCartIcon = cartIcon || document.querySelector(vendorSelector);
+    const flyout = resolvedContainer?.querySelector('.header-cart-flyout');
+    if (!flyout || !resolvedContainer) return;
+
+    if (activeCartIcon && activeCartIcon.contains(e.target)) {
+      e.preventDefault();
+      flyout.style.display = flyout.style.display === 'none' ? 'block' : 'none';
+      return;
+    }
+
+    if (!flyout.contains(e.target)) {
+      flyout.style.display = 'none';
+    }
+  });
+
+  window.addEventListener('cart-updated', updateMiniCart);
+  updateMiniCart();
+}
+
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
@@ -140,6 +225,15 @@ export default async function decorate(block) {
     });
   }
 
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools && !navTools.querySelector('.icon-cart')) {
+    const authoredCart = document.querySelector('.icon-cart');
+    if (authoredCart && navTools.contains(authoredCart)) {
+      authoredCart.setAttribute('aria-label', 'Shopping cart');
+      authoredCart.setAttribute('role', 'button');
+    }
+  }
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
@@ -157,4 +251,6 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  initCartManager('.icon-cart', block);
 }

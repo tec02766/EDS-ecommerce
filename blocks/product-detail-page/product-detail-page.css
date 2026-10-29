@@ -1,0 +1,128 @@
+.pdp-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.pdp-container .pdp-media-side, .pdp-container .pdp-info-side{
+    flex: 1;
+}
+
+.pdp-container .pdp-media-side img {
+    border-radius: 20px;
+}
+
+.pdp-container .pdp-info-side {
+    padding: 20px;
+}
+
+.pdp-container .pdp-info-side .pdp-title{
+   margin-top: 0; 
+   margin-bottom: 0;
+   font-size: var(--heading-font-size-4xl);
+   line-height: var(--line-height-28);
+}
+
+.pdp-container .pdp-info-side .pdp-short-desc{
+    margin-top: 0;
+}
+
+.pdp-container .pdp-info-side .pdp-qty-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.pdp-container .pdp-info-side .pdp-qty-label {
+    font-weight: 600;
+}
+
+.pdp-container .pdp-info-side .pdp-qty-stepper {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #d9d9d9;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.pdp-container .pdp-info-side .pdp-qty-btn {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    background: #f5f5f5;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.pdp-container .pdp-info-side .pdp-qty-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pdp-container .pdp-info-side .pdp-qty-value {
+    min-width: 36px;
+    text-align: center;
+    font-weight: 600;
+    padding: 0 8px;
+}
+
+.pdp-container .pdp-info-side .pdp-add-btn{
+    background-color: var(--brand-base-color);
+    color: var(--text-color);
+    font-size: var(--body-font-size-base);
+    padding: 12px 16px;
+    border-radius: 30px;
+    margin-bottom: 32px;
+    display: block;
+    border: 0;
+    cursor: pointer;
+}
+
+.pdp-container .pdp-info-side .pdp-price{
+    font-weight: bold;
+    font-size: var(--body-font-size-xl);
+    margin-bottom: 20px;
+}
+
+.pdp-related-products {
+    margin-top: 48px;
+}
+
+.pdp-related-products .product-grid {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+}
+
+.pdp-related-products .product-card {
+    flex: 1 1 220px;
+    min-width: 220px;
+    max-width: 280px;
+}
+
+.pdp-related-products .product-card a:hover {
+    text-decoration: none;
+}
+
+.pdp-related-products .product-card .card-image img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.pdp-related-products .product-card .card-info {
+    margin: 16px 0;
+}
+
+.pdp-related-products .product-card .card-info h4,
+.pdp-related-products .product-card .card-info p {
+    color: var(--text-color);
+}
+
+.pdp-related-products .product-card .card-info h4 {
+    margin: 0 0 8px;
+    font-size: var(--heading-font-size-2xl);
+    line-height: var(--line-height-28);
+}
