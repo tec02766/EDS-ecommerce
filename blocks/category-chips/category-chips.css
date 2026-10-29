@@ -1,0 +1,19 @@
+.category-chips{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.category-chips .category-chips{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.category-chips .category-chips a{
+    color: var(--text-color);
+    background: var(--brand-base-color);
+    padding: 10px 30px;
+    border-radius: 20px;
+}
