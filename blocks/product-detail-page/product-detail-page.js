@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createProductGallery } from '../product-gallery/product-gallery.js';
 
 export default async function decorate(block) {
   const currentPath = window.location.pathname;
@@ -34,17 +35,19 @@ export default async function decorate(block) {
     // 1. Image Section
     const mediaSide = document.createElement('div');
     mediaSide.className = 'pdp-media-side';
-    const mainImg = createOptimizedPicture(product.image, product.title, true, [{ width: '600' }]);
-    mediaSide.innerHTML = `<div class="pdp-main-image">${mainImg.outerHTML}</div>`;
 
-    if (product.gallery) {
-      const galleryWrapper = document.createElement('div');
-      galleryWrapper.className = 'pdp-gallery-thumbs';
-      product.gallery.split(',').forEach((imgUrl) => {
-        const thumb = createOptimizedPicture(imgUrl.trim(), product.title, false, [{ width: '100' }]);
-        galleryWrapper.appendChild(thumb);
-      });
-      mediaSide.appendChild(galleryWrapper);
+    const galleryImages = [product.image, ...(product.gallery ? product.gallery.split(',') : [])]
+      .map((image) => image && image.trim())
+      .filter(Boolean);
+
+    if (galleryImages.length > 1) {
+      mediaSide.appendChild(createProductGallery(galleryImages, product.title));
+    } else if (product.image) {
+      const mainImg = createOptimizedPicture(product.image, product.title, true, [{ width: '600' }]);
+      const mainImageWrap = document.createElement('div');
+      mainImageWrap.className = 'pdp-main-image';
+      mainImageWrap.appendChild(mainImg);
+      mediaSide.appendChild(mainImageWrap);
     }
 
     // 2. Info Section & Stock-Aware Quantity Selector

@@ -1,6 +1,8 @@
 .pdp-container{
     display: flex;
     flex-direction: row;
+    margin-top: 30px;
+    gap: 20px;
 }
 
 .pdp-container .pdp-media-side, .pdp-container .pdp-info-side{
@@ -125,4 +127,10 @@
     margin: 0 0 8px;
     font-size: var(--heading-font-size-2xl);
     line-height: var(--line-height-28);
+}
+
+@media (width <= 768px) {
+    .pdp-container{
+        flex-direction: column;
+    }
 }
