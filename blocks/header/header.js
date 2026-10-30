@@ -148,6 +148,7 @@ export function initCartManager(cartIconSelector, headerContainerSelector) {
     cartHTML += `
       </div>
       <div class="mini-cart-actions">
+        <a href="/cart" class="mini-cart-view-btn">View Cart</a>
         <a href="/checkout" class="mini-cart-checkout-btn">Proceed to Checkout</a>
       </div>
     `;

@@ -346,7 +346,7 @@ header .mini-cart-item {
   gap: 12px;
   align-items: center;
   padding-bottom: 12px;
-  border-bottom: 1px solid var(--highlight-background-color, #e5e5e5);
+  border-bottom: 1px solid var(--highlight-background-color);
 }
 
 header .mini-cart-item:last-child {
@@ -359,7 +359,7 @@ header .mini-cart-img {
   height: 52px;
   object-fit: cover;
   border-radius: 6px;
-  background: var(--highlight-background-color, #f5f5f5);
+  background: var(--highlight-background-color);
 }
 
 header .mini-cart-details {
@@ -376,23 +376,35 @@ header .mini-cart-title {
 header .mini-cart-meta {
   margin: 0;
   font-size: 0.8rem;
-  color: var(--text-color, #1d1d1d);
+  color: var(--text-color);
 }
 
 header .mini-cart-actions {
   margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
+header .mini-cart-view-btn,
 header .mini-cart-checkout-btn {
   display: block;
   width: 100%;
   text-align: center;
   padding: 10px 0;
   border-radius: 4px;
-  background: var(--brand-base-color);
-  color: var(--text-color);
   text-decoration: none;
   font-weight: 600;
+}
+
+header .mini-cart-view-btn {
+  background: var(--gray-100-color);
+  color: var(--text-color);
+}
+
+header .mini-cart-checkout-btn {
+  background: var(--brand-base-color);
+  color: var(--text-color);
 }
 
 @media (width <= 899px) {
