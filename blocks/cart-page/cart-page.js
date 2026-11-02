@@ -93,7 +93,7 @@ function renderCartPage(block) {
   const summaryCard = document.createElement('aside');
   summaryCard.className = 'cart-page-summary';
   summaryCard.innerHTML = `
-    <h2>Order summary</h2>
+    <h4>Order summary</h4>
     <div class="cart-page-summary-row">
       <span>Subtotal</span>
       <strong>${formatPrice(subtotal)}</strong>
@@ -140,6 +140,13 @@ function renderCartPage(block) {
       renderCartPage(block);
     });
   });
+
+  const checkoutButton = block.querySelector('.cart-page-checkout');
+  if (checkoutButton) {
+    checkoutButton.addEventListener('click', () => {
+      window.location.href = '/checkout';
+    });
+  }
 }
 
 export default function decorate(block) {

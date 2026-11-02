@@ -37,6 +37,7 @@
 .cart-page-details h3 {
     margin: 0 0 8px;
     font-size: var(--heading-font-size-l);
+    line-height: var(--line-height-24);
 }
 
 .cart-page-price {
@@ -85,10 +86,9 @@
     border: 1px solid var(--gray-200-color);
 }
 
-.cart-page-summary h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: var(--heading-font-size-xl);
+.cart-page-summary h4 {
+    font-size: var(--heading-font-size-2xl);
+    margin:0;
 }
 
 .cart-page-summary-row {
