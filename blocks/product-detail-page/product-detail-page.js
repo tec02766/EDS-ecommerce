@@ -1,8 +1,9 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, loadCSS } from '../../scripts/aem.js';
 import { createProductGallery } from '../product-gallery/product-gallery.js';
 
 export default async function decorate(block) {
   const currentPath = window.location.pathname;
+  await loadCSS(`${window.hlx.codeBasePath}/blocks/product-gallery/product-gallery.css`);
   block.innerHTML = '<p class="loading">Loading product details...</p>';
 
   try {
