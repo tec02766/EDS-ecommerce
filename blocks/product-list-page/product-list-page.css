@@ -1,4 +1,4 @@
-.product-list-page-container .hero-wrapper:after{
+.product-list-page-container .hero-wrapper::after{
     content: '';
     position: absolute;
     top: 0;
@@ -8,6 +8,7 @@
     z-index: -1;
     background-color: rgb(0 0 0 / 18%);
 }
+
 .product-list-page{
     display: flex;
 }
