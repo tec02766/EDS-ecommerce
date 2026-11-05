@@ -3,32 +3,6 @@ header {
   position: relative;
 }
 
-header .header-promo-bar {
-  display: none;
-  background: var(--brand-base-color);
-  color: var(--text-color);
-  padding: 10px;
-}
-
-header .header-promo-inner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--body-font-size-sm);
-}
-
-header .header-promo-close {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: 0;
-  cursor: pointer;
-  background: transparent;
-  font-size: var(--body-font-size-lg);
-}
-
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
@@ -61,10 +35,6 @@ header nav[aria-expanded='true'] {
 }
 
 @media (width >= 900px) {
-  header .header-promo-bar{
-    display: block;
-  }
-
   header .nav-wrapper {
     position: relative;
   }
