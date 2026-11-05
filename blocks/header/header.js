@@ -176,7 +176,83 @@ export function initCartManager(cartIconSelector, headerContainerSelector) {
   updateMiniCart();
 }
 
+function getPromoText(block) {
+  const config = {};
+  block.querySelectorAll(':scope > div').forEach((row) => {
+    const key = row.children[0]?.textContent.trim().toLowerCase();
+    const value = row.children[1]?.textContent.trim();
+    if (key) config[key] = value;
+  });
+
+  const promoValue = config.promo || config['promo-text'] || config.promotion;
+  if (promoValue) return promoValue.replace(/\s+/g, ' ').trim();
+
+  const fullText = block.textContent || '';
+  const source = fullText.replace(/\r\n/g, '\n').trim();
+
+  if (!source) return '';
+
+  const markerMatch = source.match(/promo\s*:?\s*([\s\S]*?)(?:\n\s*---\s*\n|$)/i);
+  if (markerMatch) {
+    return markerMatch[1].replace(/\s+/g, ' ').trim();
+  }
+
+  const beforeSeparator = source.split('---')[0].trim();
+  if (beforeSeparator) {
+    return beforeSeparator.replace(/\s+/g, ' ').trim();
+  }
+
+  return source.replace(/\s+/g, ' ').trim();
+}
+
+function addPromoBar(block, authoredText = '') {
+  const promoKey = 'aem-promo-bar-dismissed';
+  const headerEl = block.closest('header');
+
+  if (!headerEl) return;
+
+  try {
+    if (window.sessionStorage.getItem(promoKey) === 'true') {
+      headerEl.classList.remove('has-promo-bar');
+      return;
+    }
+  } catch (err) {
+    // sessionStorage may not be available, so we will always show the promo bar
+  }
+
+  const fallbackText = '<strong>Free shipping</strong> on orders over <strong>$50 !</strong>';
+  const promoMessage = (authoredText || fallbackText)
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const promoBar = document.createElement('div');
+  promoBar.className = 'header-promo-bar';
+  promoBar.setAttribute('role', 'status');
+  promoBar.innerHTML = `
+    <div class="header-promo-inner">
+      <span>${promoMessage}</span>
+      <button type="button" class="header-promo-close" aria-label="Close promotional message">×</button>
+    </div>
+  `;
+
+  const closeButton = promoBar.querySelector('.header-promo-close');
+  closeButton.addEventListener('click', () => {
+    try {
+      window.sessionStorage.setItem(promoKey, 'true');
+    } catch (err) {
+      // sessionStorage may not be available, so we will always show the promo bar
+    }
+    promoBar.remove();
+    headerEl.classList.remove('has-promo-bar');
+  });
+
+  headerEl.insertBefore(promoBar, block);
+  headerEl.classList.add('has-promo-bar');
+}
+
 export default async function decorate(block) {
+  const authoredPromoText = getPromoText(block);
+
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
@@ -253,5 +329,6 @@ export default async function decorate(block) {
   navWrapper.append(nav);
   block.append(navWrapper);
 
+  addPromoBar(block, authoredPromoText);
   initCartManager('.icon-cart', block);
 }
